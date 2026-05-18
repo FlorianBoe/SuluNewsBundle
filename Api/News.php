@@ -20,61 +20,43 @@ use JMS\Serializer\Annotation\VirtualProperty;
 use Sulu\Component\Rest\ApiWrapper;
 use TheCadien\Bundle\SuluNewsBundle\Entity\News as NewsEntity;
 
-/**
- * The News class which will be exported to the API.
- *
- * @ExclusionPolicy("all")
- */
+#[ExclusionPolicy('all')]
 class News extends ApiWrapper
 {
-    public function __construct(NewsEntity $contact, $locale)
+    public function __construct(NewsEntity $contact, string $locale)
     {
         // @var NewsEntity entity
         $this->entity = $contact;
         $this->locale = $locale;
     }
 
-    /**
-     * Get id.
-     *
-     * @VirtualProperty
-     *
-     * @SerializedName("id")
-     * @Groups({"fullNews"})
-     */
+    #[VirtualProperty]
+    #[SerializedName('id')]
+    #[Groups(['fullNews'])]
     public function getId(): ?int
     {
         return $this->entity->getId();
     }
 
-    /**
-     * @VirtualProperty
-     *
-     * @SerializedName("title")
-     * @Groups({"fullNews"})
-     */
+    #[VirtualProperty]
+    #[SerializedName('title')]
+    #[Groups(['fullNews'])]
     public function getTitle(): ?string
     {
         return $this->entity?->getTitle();
     }
 
-    /**
-     * @VirtualProperty
-     *
-     * @SerializedName("teaser")
-     * @Groups({"fullNews"})
-     */
+    #[VirtualProperty]
+    #[SerializedName('teaser')]
+    #[Groups(['fullNews'])]
     public function getTeaser(): ?string
     {
         return $this->entity->getTeaser();
     }
 
-    /**
-     * @VirtualProperty
-     *
-     * @SerializedName("content")
-     * @Groups({"fullNews"})
-     */
+    #[VirtualProperty]
+    #[SerializedName('content')]
+    #[Groups(['fullNews'])]
     public function getContent(): array
     {
         if (!$this->entity->getContent()) {
@@ -84,34 +66,25 @@ class News extends ApiWrapper
         return $this->entity->getContent();
     }
 
-    /**
-     * @VirtualProperty
-     *
-     * @SerializedName("enabled")
-     * @Groups({"fullNews"})
-     */
+    #[VirtualProperty]
+    #[SerializedName('enabled')]
+    #[Groups(['fullNews'])]
     public function isEnabled(): bool
     {
         return $this->entity?->isEnabled();
     }
 
-    /**
-     * @VirtualProperty
-     *
-     * @SerializedName("publishedAt")
-     * @Groups({"fullNews"})
-     */
+    #[VirtualProperty]
+    #[SerializedName('publishedAt')]
+    #[Groups(['fullNews'])]
     public function getPublishedAt(): ?\DateTime
     {
         return $this->entity?->getPublishedAt();
     }
 
-    /**
-     * @VirtualProperty
-     *
-     * @SerializedName("route")
-     * @Groups({"fullNews"})
-     */
+    #[VirtualProperty]
+    #[SerializedName('route')]
+    #[Groups(['fullNews'])]
     public function getRoutePath(): ?string
     {
         if ($this->entity?->getRoute()) {
@@ -121,27 +94,17 @@ class News extends ApiWrapper
         return '';
     }
 
-    /**
-     * Get tags.
-     *
-     * @VirtualProperty
-     *
-     * @SerializedName("tags")
-     * @Groups({"fullNews"})
-     */
+    #[VirtualProperty]
+    #[SerializedName('tags')]
+    #[Groups(['fullNews'])]
     public function getTags(): array
     {
         return $this->entity->getTagNameArray();
     }
 
-    /**
-     * Get the contacts avatar and return the array of different formats.
-     *
-     * @VirtualProperty
-     *
-     * @SerializedName("header")
-     * @Groups({"fullNews"})
-     */
+    #[VirtualProperty]
+    #[SerializedName('header')]
+    #[Groups(['fullNews'])]
     public function getHeader(): array
     {
         if ($this->entity->getHeader()) {
@@ -153,71 +116,43 @@ class News extends ApiWrapper
         return [];
     }
 
-    /**
-     * Get tags.
-     *
-     * @VirtualProperty
-     *
-     * @SerializedName("authored")
-     * @Groups({"fullNews"})
-     */
+    #[VirtualProperty]
+    #[SerializedName('authored')]
+    #[Groups(['fullNews'])]
     public function getAuthored(): \DateTime
     {
         return $this->entity->getCreated();
     }
 
-    /**
-     * Get tags.
-     *
-     * @VirtualProperty
-     *
-     * @SerializedName("created")
-     * @Groups({"fullNews"})
-     */
+    #[VirtualProperty]
+    #[SerializedName('created')]
+    #[Groups(['fullNews'])]
     public function getCreated(): \DateTime
     {
         return $this->entity->getCreated();
     }
 
-    /**
-     * Get tags.
-     *
-     * @VirtualProperty
-     *
-     * @SerializedName("changed")
-     * @Groups({"fullNews"})
-     */
+    #[VirtualProperty]
+    #[SerializedName('changed')]
+    #[Groups(['fullNews'])]
     public function getChanged(): \DateTime
     {
         return $this->entity->getChanged();
     }
 
-    /**
-     * Get tags.
-     *
-     * @VirtualProperty
-     *
-     * @SerializedName("author")
-     * @Groups({"fullNews"})
-     */
+    #[VirtualProperty]
+    #[SerializedName('author')]
+    #[Groups(['fullNews'])]
     public function getAuthor(): ?int
     {
         return $this->entity?->getCreator()?->getId();
     }
 
-    /**
-     * Get tags.
-     *
-     * @VirtualProperty
-     *
-     * @SerializedName("ext")
-     * @Groups({"fullNews"})
-     */
+    #[VirtualProperty]
+    #[SerializedName('ext')]
+    #[Groups(['fullNews'])]
     public function getSeo(): array
     {
-        $seo = ['seo'];
-        $seo['seo'] = $this->getEntity()->getSeo();
-
-        return $seo;
+        return ['seo' => $this->getEntity()->getSeo()];
     }
 }

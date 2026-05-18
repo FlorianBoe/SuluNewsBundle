@@ -23,7 +23,7 @@ use TheCadien\Bundle\SuluNewsBundle\Repository\NewsRepository;
  */
 class Configuration implements ConfigurationInterface
 {
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('sulu_news');
         $root = $treeBuilder->getRootNode();
