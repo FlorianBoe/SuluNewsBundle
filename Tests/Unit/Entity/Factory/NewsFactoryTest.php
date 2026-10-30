@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace TheCadien\Bundle\SuluNewsBundle\Tests\Unit\Entity\Factory;
 
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Sulu\Bundle\ContactBundle\Entity\Contact;
 use Sulu\Bundle\ContactBundle\Entity\ContactRepositoryInterface;
 use TheCadien\Bundle\SuluNewsBundle\Entity\Factory\MediaFactoryInterface;
@@ -30,6 +31,7 @@ use TheCadien\Bundle\SuluNewsBundle\Tests\Unit\Traits\Entity\NewsTrait;
 final class NewsFactoryTest extends TestCase
 {
     use NewsTrait;
+    use ProphecyTrait;
 
     /**
      * @var NewsFactory

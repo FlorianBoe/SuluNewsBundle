@@ -33,7 +33,7 @@ class NewsFactory extends AbstractFactory implements NewsFactoryInterface
      *
      * @throws \Exception
      */
-    public function generateNewsFromRequest(News $news, array $data, string $locale = null, $state = null): News
+    public function generateNewsFromRequest(News $news, array $data, ?string $locale = null, $state = null): News
     {
         if ($this->getProperty($data, 'title')) {
             $news->setTitle($this->getProperty($data, 'title'));

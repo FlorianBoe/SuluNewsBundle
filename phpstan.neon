@@ -16,7 +16,7 @@ parameters:
         - %currentWorkingDirectory%/Tests/*
         - %currentWorkingDirectory%/vendor/*
     symfony:
-        console_application_loader: Tests/phpstan/console-application.php
-        constant_hassers: false
+        consoleApplicationLoader: Tests/phpstan/console-application.php
+        constantHassers: false
     doctrine:
         objectManagerLoader: Tests/phpstan/object-manager.php

@@ -4,13 +4,11 @@ declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
 use Rector\Doctrine\Set\DoctrineSetList;
-use Rector\PHPUnit\Rector\Class_\AddProphecyTraitRector;
-use Rector\PHPUnit\Set\PHPUnitLevelSetList;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Set\ValueObject\LevelSetList;
 use Rector\Set\ValueObject\SetList;
 use Rector\Symfony\Set\SymfonySetList;
-use Sulu\Rector\Set\SuluLevelSetList;
+use Sulu\Rector\Set\SuluSetList;
 
 return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->paths([
@@ -37,7 +35,7 @@ return static function (RectorConfig $rectorConfig): void {
 
     $rectorConfig->sets([
         SetList::CODE_QUALITY,
-        LevelSetList::UP_TO_PHP_81,
+        LevelSetList::UP_TO_PHP_83,
     ]);
 
     $rectorConfig->sets([
@@ -50,18 +48,13 @@ return static function (RectorConfig $rectorConfig): void {
         DoctrineSetList::DOCTRINE_CODE_QUALITY,
     ]);
 
-    $rectorConfig->skip(
-        [AddProphecyTraitRector::class]
-    );
-
     // phpunit rules
     $rectorConfig->sets([
-        PHPUnitLevelSetList::UP_TO_PHPUNIT_90,
-        PHPUnitSetList::PHPUNIT_91,
+        PHPUnitSetList::PHPUNIT_CODE_QUALITY,
     ]);
 
     // sulu rules
     $rectorConfig->sets([
-        SuluLevelSetList::UP_TO_SULU_25,
+        SuluSetList::SULU_26,
     ]);
 };
